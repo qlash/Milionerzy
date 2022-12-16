@@ -40,10 +40,6 @@ function App() {
     return road.length ? questions[road[current]].a[0] : ''
   }, [current, road])
 
-  const userAnswerHandler = (answer: string) => {
-    setUserAnswer(answer)
-  }
-
   const nextQuestion = () => {
     setUserAnswer('')
     setCurrent(current+1)
@@ -79,7 +75,7 @@ function App() {
             question={currentQuestion} 
             userAnswer={userAnswered}
             correctAnswer={correctAnswer}
-            answerHandler={userAnswerHandler}
+            answerHandler={setUserAnswer}
           ></Question>
         : ''
       }
