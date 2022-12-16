@@ -1,5 +1,5 @@
 import { questions } from './api/questions'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Question from './components/Question'
 import UserAnswer from './components/UserAnswer'
 import Amount from './components/Amount'
@@ -27,6 +27,19 @@ function App() {
 
   useEffect(newGame, [])
 
+  const currentQuestion = useMemo(() => {
+    if (road.length) {
+      const question = structuredClone(questions[road[current]])
+      question.a = question.a.sort(() => (Math.random() > 0.5) ? 1 : -1)
+
+      return question
+    }
+  }, [current, road])
+
+  const correctAnswer = useMemo(() => {
+    return road.length ? questions[road[current]].a[0] : ''
+  }, [current, road])
+
   const userAnswerHandler = (answer: string) => {
     setUserAnswer(answer)
   }
@@ -35,7 +48,7 @@ function App() {
     setUserAnswer('')
     setCurrent(current+1)
 
-    if (current == 0) {
+    if (current == 1) {
       setRoad([])
       setWinner(true)
     }
@@ -50,7 +63,7 @@ function App() {
         }
 
         {userAnswered && <UserAnswer 
-          isCorrect={userAnswered === questions[road[current]].a[0]}
+          isCorrect={userAnswered === correctAnswer}
           next={nextQuestion}
           restart={newGame}
         ></UserAnswer>}
@@ -61,10 +74,11 @@ function App() {
         }
       </div>
 
-      {road.length 
+      {currentQuestion 
         ? <Question 
-            question={questions[road[current]]} 
+            question={currentQuestion} 
             userAnswer={userAnswered}
+            correctAnswer={correctAnswer}
             answerHandler={userAnswerHandler}
           ></Question>
         : ''

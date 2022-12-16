@@ -27,7 +27,11 @@
       box-shadow: inset -.5rem -.5rem .5rem .1rem black;
       border-radius: 5rem;
 
-      &:hover {
+      &:empty {
+        cursor: not-allowed;
+      }
+
+      &:not(:empty):hover {
         background: #e89d17;
         cursor: pointer;
       }
