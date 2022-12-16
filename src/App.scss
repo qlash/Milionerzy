@@ -1,0 +1,16 @@
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+
+  .game {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

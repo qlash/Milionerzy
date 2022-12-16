@@ -1,0 +1,30 @@
+.amount {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  padding: 2rem;
+  background: #050e5d;
+  list-style: none;
+  border-radius: 3rem;
+
+  .price {
+    display: flex;
+    padding: 0 .5rem;
+    font-size: 1.2rem;
+    color: #e9d0a1;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid transparent;
+    border-radius: .5rem;
+    text-shadow: 1px 1px 4px black;
+
+    &.guaranteed {
+      color: white;
+    }
+
+    &.active {
+      background: #f8a418;
+      border-color: white;
+    }
+  }
+}
