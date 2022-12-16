@@ -7,7 +7,7 @@ interface IWinner {
 function Winner(props: IWinner) {
   return (
     <div className="winner">
-      <p>Wygrałeś drineczka</p>
+      <p>Wygrałeś drineczka!</p>
       <img src="/drink.jpg"></img>
       <button onClick={props.restart}>Gramy o następnego!</button>
     </div>

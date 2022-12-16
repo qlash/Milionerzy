@@ -14,7 +14,7 @@ function Amount(props: IAmount) {
         <li className={`price ${amount.guaranteed ? 'guaranteed' : ''} ${11-props.current == index ? 'active' : ''}`} key={index}>
           <span>{12-index}</span>
           <span>
-            {new Intl.NumberFormat('pl', { style: 'currency', currency: 'PLN' }).format(amount.price)}
+            {new Intl.NumberFormat('pl', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(amount.price)}
           </span>
         </li>
       )}
