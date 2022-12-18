@@ -165,5 +165,294 @@ export const questions: questionType[] = [
       '996',
       '969'
     ]
+  },
+  {
+    q: 'Przechodni jest...',
+    a: [
+      'czasownik "chłodzić"',
+      'przechodzień',
+      'chłodnik w przychodni',
+      'rzeczownik "przychodnia"'
+    ]
+  },
+  {
+    q: 'Flaga Japonii to czerwone koło na białym tle, a czerwone koło na zielonym tle ma flaga...',
+    a: [
+      'Bangladeszu',
+      'Brazylii',
+      'Belgii',
+      'Białorusi'
+    ]
+  },
+  {
+    q: 'Anchois powinna unikać osoba uczulona na...',
+    a: [
+      'ryby',
+      'peniylinę',
+      'słońce',
+      'kurz'
+    ]
+  },
+  {
+    q: 'Powetować straty to...',
+    a: [
+      'wynagrodzić je sobie',
+      'sprzeciwić się im',
+      'ponieść ją',
+      'spisać na straty'
+    ]
+  },
+  {
+    q: 'Do czego Leonardo da Vinci używał sangwiny?',
+    a: [
+      'do rysowania',
+      'do puszczania krwi',
+      'do picia na umór',
+      'do zelowania butów',
+    ]
+  },
+  {
+    q: 'Jeśli korpoludy ciężko pracują, to właśnie siedzą...',
+    a: [
+      'w worku',
+      'w teczce',
+      'w paczce',
+      'w kopercie',
+    ]
+  },
+  {
+    q: 'Słupki A, B, C, D w aucie, to słupki podtrzymujące...',
+    a: [
+      'dach',
+      'prawe koło',
+      'lewe koło',
+      'podwozie',
+    ]
+  },
+  {
+    q: 'Ile punktów przyznaje się w koszykówce za rzut osobisty:',
+    a: [
+      '1',
+      '2',
+      '3',
+      '4'
+    ]
+  },
+  {
+    q: 'Mistrzami jakiej broni są Atos, Portos i Aramis z książki Aleksandra Dumasa?',
+    a: [
+      'szpady',
+      'szabli',
+      'miecza',
+      'łuku'
+    ]
+  },
+  {
+    q: 'Pokładne to:',
+    a: [
+      'opłata cmentarna',
+      'dawna nazwa nocy poślubnej',
+      'pomost między burtami statków',
+      'pora drzemki',
+    ]
+  },
+  {
+    q: 'Jakie elementy garderoby powstają najczęściej z materiału typu softshell?',
+    a: [
+      'kurtki',
+      'rajstopy',
+      'krawaty',
+      'gorsety'
+    ]
+  },
+  {
+    q: 'Ile to jest 1111 razy 1111, jeśli 1 razy 1 to 1, a 11 razy 11 to 121?',
+    a: [
+      '1 234 321',
+      '12 321',
+      '111 111 111',
+      '123 456 789'
+    ]
+  },
+  {
+    q: 'Piaszczyste wzniesienie usypane przez wiatr to: ',
+    a: [
+      'wydma ',
+      'piarg ',
+      'firn ',
+      'kopiec '
+    ],
+  },
+  {
+    q: 'W jakich jednostkach mierzymy natężenie dźwięku ? ',
+    a: [
+      'w decybelach ',
+      'w lumenach ',
+      'w kelwinach ',
+      'w amperach '
+    ],
+  },
+  {
+    q: 'Haftka to rodzaj: ',
+    a: [
+      'zapinki',
+      'ściegu ',
+      'agrafki ',
+      'suwaka ',
+    ],
+  },
+  {
+    q: 'Ostatni przypadek w deklinacji polskiej to: ',
+    a: [
+      'wołacz',
+      'narzędnik ',
+      'miejscownik ',
+      'biernik '
+    ],
+  },
+  {
+    q: 'Ile wysokości ma stożek? ',
+    a: [
+      'trzy',
+      'jedną',
+      'dwie',
+      'cztery'
+    ],
+  },
+  {
+    q: 'Który z zespołów wylansował piosenkę pt. „Bal wszystkich świętych”? ',
+    a: [
+      'Budka Suflera',
+      'Myslovitz ',
+      'T. Love ',
+      'Piersi '
+    ],
+  },
+  {
+    q: 'W którym kraju zachęca się rodziny do posiadania tylko jednego potomka ? ',
+    a: [
+      'w Chinach',
+      'w Rosji ',
+      'w Szwecji ',
+      'we Francji ',
+    ],
+  },
+  {
+    q: 'Jaki okrzyk wydawał kucharz Bartolini Bartłomiej, bohater dobranocki pt. „Porwanie Baltazara Gąbki”? ',
+    a: [
+      '„Mamma Mia!” ',
+      '„Carramba!” ',
+      '„Kruca fuks!” ',
+      '„Ach, jooo!” '
+    ],
+  },
+  {
+    q: 'Kto był wokalistą zespołu Led Zeppelin? ',
+    a: [
+      'Robert Plant',
+      'John Lennon',
+      'Mick Jagger',
+      'Bon Scott'
+    ],
+  },
+  {
+    q: 'Która postać nie została stworzona przez Walta Disneya? ',
+    a: [
+      'Pszczółka Maja',
+      'Goofy ',
+      'Pluto ',
+      'Kaczor Donald '
+    ],
+  },
+  {
+    q: 'Która z liczb nie jest "pierwszą"?',
+    a: [
+      '63',
+      '61',
+      '79',
+      '97'
+    ]
+  },
+  {
+    q: 'Gdzie w 1963 roku zastrzelono J. F. Kennedyego? ',
+    a: [
+      'w Dallas',
+      'w Los Angeles ',
+      'w Atlancie ',
+      'w Phoenix '
+    ],
+  },
+  {
+    q: 'Ilu było jeźdźców Apokalipsy? ',
+    a: [
+      'czterech',
+      'dwóch ',
+      'trzech ',
+      'pięciu '
+    ],
+  },
+  {
+    q: 'Jaki płacz oznaczają „krokodyle łzy” ? ',
+    a: [
+      'nieszczery ',
+      'szczery ',
+      'dyskretny ',
+      'histeryczny ',
+    ],
+  },
+  {
+    q: 'Wirtuozem gry na jakim instrumencie był Eddie Van Halen?',
+    a: [
+      'gitarze',
+      'perkusji',
+      'basie',
+      'harmonijce ustnej'
+    ]
+  },
+  {
+    q: 'Czego nie produkują pszczoły? ',
+    a: [
+      'nektaru ',
+      'mleczka ',
+      'kitu ',
+      'wosku ',
+    ],
+  },
+  {
+    q: 'Z jakim ssakiem spokrewniony jest bizon? ',
+    a: [
+      'z żubrem ',
+      'z jeleniem ',
+      'z łosiem ',
+      'z sarną ',
+    ],
+  },
+  {
+    q: 'Jakiego koloru jest łódź podwodna w piosence zespołu The Beatles? ',
+    a: [
+      'żółtego ',
+      'białego ',
+      'czarnego ',
+      'niebieskiego '
+    ],
+  },
+  {
+    q: 'W jakim kraju wynaleziono klocki Lego? ',
+    a: [
+      'w Danii ',
+      'w USA ',
+      'w Niemczech ',
+      'na Węgrzech '
+    ],
+  },
+  {
+    q: 'W wojskach lądowych jedna gwiazdka na pagonie oznacza: ',
+    a: [
+      'chorążego ',
+      'kaprala ',
+      'sierżanta ',
+      'plutonowego '
+    ],
   }
+
 ]
