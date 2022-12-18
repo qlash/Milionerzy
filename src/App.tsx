@@ -6,6 +6,8 @@ import Amount from './components/Amount'
 import './App.scss'
 import Winner from './components/Winner'
 import Helpers from './components/Helpers'
+import CurrentHelper from './components/CurrentHelper'
+import { CurrentHelperType } from './components/CurrentHelperType'
 
 function App() {
   const [current, setCurrent] = useState(0)
@@ -13,11 +15,17 @@ function App() {
   const [userAnswered, setUserAnswer] = useState('')
   const [winner, setWinner] = useState(false)
 
+  const [helpers, setHelpers] = useState([false, false, false])
+
+  const [currentHelper, setCurrentHelper] = useState<CurrentHelperType>({ helper: '' })
+
   const newGame = () => {
     const newRoad = new Set<number>([])
 
     setUserAnswer('')
     setWinner(false)
+    setHelpers([false, false, false])
+    setCurrentHelper({ helper: '' })
 
     do {
       newRoad.add(Math.floor(Math.random() * questions.length))
@@ -29,7 +37,7 @@ function App() {
 
   useEffect(newGame, [])
 
-  const currentQuestion = useMemo<questionType | null>(() => {
+  const currentQuestion = useMemo<questionType | undefined>(() => {
     if (road.length) {
       const question = structuredClone(questions[road[current]])
 
@@ -37,7 +45,7 @@ function App() {
 
       return question
     }
-    return null
+    return undefined
   }, [current, road])
 
   const correctAnswer = useMemo(() => {
@@ -48,16 +56,71 @@ function App() {
     setUserAnswer('')
     setCurrent(current + 1)
 
-    if (current === 1) {
+    if (current === 11) {
       setRoad([])
       setWinner(true)
     }
   }
 
+  const userAnswerHandler = (answer: string) => {
+    setCurrentHelper({ helper: '' })
+    setUserAnswer(answer)
+  }
+
+  const helperFiftyFifty = () => {
+    const answers = questions[road[current]].a
+    const correctAnswers = [answers[0], answers[Math.floor(Math.random() * 3 + 1)]]
+
+    if (currentQuestion) {
+      currentQuestion?.a.forEach((a, i) => {
+        if (!correctAnswers.includes(a)) {
+          currentQuestion.a[i] = ''
+        }
+      })
+    }
+
+    setCurrentHelper({
+      helper: 'fifty',
+      text: 'Usuwamy dwie błędne odpowiedzi....'
+    })
+  }
+
+  const helperCrowd = () => {
+    setCurrentHelper({
+      helper: 'crowd',
+      current: current,
+      question: questions[road[current]],
+      currentQuestion: currentQuestion
+    })
+  }
+
+  const helperPhone = () => {
+    setCurrentHelper({
+      helper: 'phone',
+      current: current,
+      question: questions[road[current]],
+    })
+  }
+
+  const useHelperHandler = (id: number) => {
+    const updatedHelpers = helpers.map((v, i) => i === id ? true : v)
+
+    switch (id) {
+    case 0: helperFiftyFifty(); break
+    case 1: helperCrowd(); break
+    case 2: helperPhone(); break
+    }
+
+    setHelpers(updatedHelpers)
+  }
+
   return (
     <div className="App">
       <div className="game">
-        <Helpers></Helpers>
+        {!winner && <Helpers
+          helpers={helpers}
+          useHelper={useHelperHandler}></Helpers>}
+
         {!winner && <Amount current={current}></Amount>}
 
         {userAnswered && <UserAnswer
@@ -66,6 +129,13 @@ function App() {
           restart={newGame}
         ></UserAnswer>}
 
+        {currentHelper.helper && <CurrentHelper
+          helper={currentHelper.helper}
+          current={currentHelper.current}
+          question={currentHelper.question}
+          currentQuestion={currentHelper.currentQuestion}
+        ></CurrentHelper>}
+
         {winner && <Winner restart={newGame}></Winner>}
       </div>
 
@@ -73,7 +143,7 @@ function App() {
         question={currentQuestion}
         userAnswer={userAnswered}
         correctAnswer={correctAnswer}
-        answerHandler={setUserAnswer}
+        answerHandler={userAnswerHandler}
       ></Question>}
     </div>
   )
