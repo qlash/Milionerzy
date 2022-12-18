@@ -58,10 +58,7 @@ function App() {
     <div className="App">
       <div className="game">
         <Helpers></Helpers>
-        {winner
-          ? ''
-          : <Amount current={current}></Amount>
-        }
+        {!winner && <Amount current={current}></Amount>}
 
         {userAnswered && <UserAnswer
           isCorrect={userAnswered === correctAnswer}
@@ -69,21 +66,15 @@ function App() {
           restart={newGame}
         ></UserAnswer>}
 
-        {winner
-          ? <Winner restart={newGame}></Winner>
-          : ''
-        }
+        {winner && <Winner restart={newGame}></Winner>}
       </div>
 
-      {currentQuestion
-        ? <Question
-          question={currentQuestion}
-          userAnswer={userAnswered}
-          correctAnswer={correctAnswer}
-          answerHandler={setUserAnswer}
-        ></Question>
-        : ''
-      }
+      {currentQuestion && <Question
+        question={currentQuestion}
+        userAnswer={userAnswered}
+        correctAnswer={correctAnswer}
+        answerHandler={setUserAnswer}
+      ></Question>}
     </div>
   )
 }
