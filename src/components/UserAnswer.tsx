@@ -10,19 +10,19 @@ function UserAnswer(props: IUserAnswer) {
   return (
     <div className={`user-answer ${props.isCorrect ? 'correct' : 'wrong'}`}>
       {
-        props.isCorrect 
-        ? (
-          <>
-            <span>Dobra odpowiedź</span>
-            <button onClick={props.next}>Dalej</button>
-          </>
-        )
-        : (
-          <>
-            <span>ZJEBAŁES!!!!</span>
-            <button onClick={props.restart}>Jeszcza raz!</button>
-          </>
-        )
+        props.isCorrect
+          ? (
+            <>
+              <span>Dobra odpowiedź</span>
+              <button onClick={props.next}>Dalej</button>
+            </>
+          )
+          : (
+            <>
+              <span>ZJEBAŁES!!!!</span>
+              <button onClick={props.restart}>Jeszcza raz!</button>
+            </>
+          )
       }
     </div>
   )

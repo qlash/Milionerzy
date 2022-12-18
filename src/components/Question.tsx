@@ -9,7 +9,7 @@ interface IQuestion {
 }
 
 function Question(props: IQuestion) {
-  const { q, a } = props.question
+  const { q: question, a: answers } = props.question
   const { answerHandler, userAnswer, correctAnswer } = props
 
   const userAnswerHandler = (answer: string) => {
@@ -20,16 +20,16 @@ function Question(props: IQuestion) {
 
   return (
     <div className="questions">
-      <div className="question">{q}</div>
+      <div className="question">{question}</div>
       <div className="answers">
-        { a.map(ans => 
-          <div 
+        { answers.map(answer =>
+          <div
             className={`answer 
-              ${userAnswer && userAnswer == ans ? 'answered' : '' }
-              ${userAnswer && ans == correctAnswer ? 'correct' : '' }
+              ${userAnswer && userAnswer === answer ? 'answered' : ''}
+              ${userAnswer && answer === correctAnswer ? 'correct' : ''}
             `}
-            onClick={() => userAnswerHandler(ans)} key={ans}
-          >{ans}</div>
+            onClick={() => userAnswerHandler(answer)} key={answer}
+          >{answer}</div>
         )}
       </div>
     </div>

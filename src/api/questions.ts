@@ -5,12 +5,12 @@ export type questionType = {
 
 export const questions: questionType[] = [
   {
-    q: "Sport wodny uprawiany na desce z żaglem to:",
+    q: 'Sport wodny uprawiany na desce z żaglem to:',
     a: [
-      "windsurfing",
-      "skateboard",
-      "surfing",
-      "bojery"
+      'windsurfing',
+      'skateboard',
+      'surfing',
+      'bojery'
     ]
   },
   {

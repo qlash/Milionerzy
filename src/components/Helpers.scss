@@ -1,0 +1,21 @@
+.helpers {
+  position: absolute;
+  top: 0;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+
+  .helper {
+    padding: 1rem;
+    text-align: center;
+    border: 2px solid white;
+    background: #1d59a9;
+    box-shadow: inset -.5rem -.5rem .5rem .1rem black;
+    border-radius: 5rem;
+
+    &:not(:empty):hover {
+      background: #97d800;
+      cursor: pointer;
+    }
+  }
+}

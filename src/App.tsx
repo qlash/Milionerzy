@@ -1,10 +1,11 @@
-import { questions } from './api/questions'
+import { questions, questionType } from './api/questions'
 import { useEffect, useMemo, useState } from 'react'
 import Question from './components/Question'
 import UserAnswer from './components/UserAnswer'
 import Amount from './components/Amount'
 import './App.scss'
 import Winner from './components/Winner'
+import Helpers from './components/Helpers'
 
 function App() {
   const [current, setCurrent] = useState(0)
@@ -14,6 +15,7 @@ function App() {
 
   const newGame = () => {
     const newRoad = new Set<number>([])
+
     setUserAnswer('')
     setWinner(false)
 
@@ -27,13 +29,15 @@ function App() {
 
   useEffect(newGame, [])
 
-  const currentQuestion = useMemo(() => {
+  const currentQuestion = useMemo<questionType | null>(() => {
     if (road.length) {
       const question = structuredClone(questions[road[current]])
+
       question.a = question.a.sort(() => (Math.random() > 0.5) ? 1 : -1)
 
       return question
     }
+    return null
   }, [current, road])
 
   const correctAnswer = useMemo(() => {
@@ -42,9 +46,9 @@ function App() {
 
   const nextQuestion = () => {
     setUserAnswer('')
-    setCurrent(current+1)
+    setCurrent(current + 1)
 
-    if (current == 1) {
+    if (current === 1) {
       setRoad([])
       setWinner(true)
     }
@@ -53,30 +57,31 @@ function App() {
   return (
     <div className="App">
       <div className="game">
-        {winner 
+        <Helpers></Helpers>
+        {winner
           ? ''
           : <Amount current={current}></Amount>
         }
 
-        {userAnswered && <UserAnswer 
+        {userAnswered && <UserAnswer
           isCorrect={userAnswered === correctAnswer}
           next={nextQuestion}
           restart={newGame}
         ></UserAnswer>}
 
-        {winner 
-          ? <Winner restart={newGame}></Winner> 
+        {winner
+          ? <Winner restart={newGame}></Winner>
           : ''
         }
       </div>
 
-      {currentQuestion 
-        ? <Question 
-            question={currentQuestion} 
-            userAnswer={userAnswered}
-            correctAnswer={correctAnswer}
-            answerHandler={setUserAnswer}
-          ></Question>
+      {currentQuestion
+        ? <Question
+          question={currentQuestion}
+          userAnswer={userAnswered}
+          correctAnswer={correctAnswer}
+          answerHandler={setUserAnswer}
+        ></Question>
         : ''
       }
     </div>

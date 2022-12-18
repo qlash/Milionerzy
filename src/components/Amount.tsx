@@ -1,5 +1,5 @@
 import './Amount.scss'
-import { amounts } from '../api/amounts';
+import { amounts } from '../api/amounts'
 
 interface IAmount {
   current: number;
@@ -7,12 +7,12 @@ interface IAmount {
 
 function Amount(props: IAmount) {
   const amountsList = [...amounts].reverse()
-  
+
   return (
     <ul className="amount">
-      {amountsList.map((amount, index) => 
-        <li className={`price ${amount.guaranteed ? 'guaranteed' : ''} ${11-props.current == index ? 'active' : ''}`} key={index}>
-          <span>{12-index}</span>
+      {amountsList.map((amount, index) =>
+        <li className={`price ${amount.guaranteed ? 'guaranteed' : ''} ${11 - props.current === index ? 'active' : ''}`} key={index}>
+          <span>{12 - index}</span>
           <span>
             {new Intl.NumberFormat('pl', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(amount.price)}
           </span>
