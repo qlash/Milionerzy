@@ -9,6 +9,8 @@ import Helpers from './components/Helpers'
 import CurrentHelper from './components/CurrentHelper'
 import { CurrentHelperType } from './components/CurrentHelperType'
 
+console.info('Baza pytań', questions.length)
+
 function App() {
   const [current, setCurrent] = useState(0)
   const [road, setRoad] = useState<number[]>([])
