@@ -12,19 +12,25 @@ function CurrentHelper(props: CurrentHelperType) {
   if (props.helper === 'crowd' && props.question && props.currentQuestion) {
     let sum = 0
     const answers = props.question.a.reduce<{[key: string]: number}>((acc, a, index) => {
-      const percent = index === 0 ? chance : index === 3 ? 100 - sum : Math.floor(Math.random() * (100 - sum))
+      const percent = index === 0 ? chance : Math.floor(Math.random() * (100 - sum))
 
-      sum += percent
+      if (props.currentQuestion?.a.find(ca => ca === a)) {
+        sum += percent
+      }
+
       acc[a] = percent
       return acc
     }, {})
 
     const sortedAnswers = props.currentQuestion.a.map(a => answers[a])
+    const index = sortedAnswers.findIndex(e => typeof e === 'number')
+
+    sortedAnswers[index] += 100 - sum
 
     text = <div className='chart'>
       {sortedAnswers.map((answer, i) =>
         <div className='chart-answer' key={i}>
-          <div className='chart-percent'>{answer}%</div>
+          <div className='chart-percent'>{answer || 0}%</div>
           <div className='chart-content'>
             <div className='chart-item' style={{ height: `${answer}%` }}></div>
           </div>
@@ -34,9 +40,14 @@ function CurrentHelper(props: CurrentHelperType) {
     </div>
   }
 
-  if (props.helper === 'phone') {
-    const answer = Math.floor(Math.random() * 100) <= chance ? 0 : Math.floor(Math.random() * 3 + 1)
+  if (props.helper === 'phone' && props.question && props.currentQuestion) {
+    let answer: number
+    let textAnswer: string
 
+    do {
+      answer = Math.floor(Math.random() * 100) <= chance ? 0 : Math.floor(Math.random() * 3 + 1)
+      textAnswer = props.question.a[answer]
+    } while (!props.currentQuestion.a.includes(textAnswer))
     let content = ''
 
     if (chance < 20) {
@@ -53,7 +64,7 @@ function CurrentHelper(props: CurrentHelperType) {
       content = 'Prawidłowa odpowiedź to'
     }
 
-    text = <div className='helper'>{content} &#34;{props.question?.a[answer]}&#34;</div>
+    text = <div className='helper'>{content} &#34;{textAnswer}&#34;</div>
   }
 
   return text

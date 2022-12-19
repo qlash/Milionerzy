@@ -99,6 +99,7 @@ function App() {
       helper: 'phone',
       current: current,
       question: questions[road[current]],
+      currentQuestion: currentQuestion
     })
   }
 
